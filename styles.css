@@ -34,14 +34,14 @@
 /* === RESET & BASE === */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; font-size: 16px; background-color: var(--bg-base); }
+html { scroll-behavior: smooth; font-size: 16px; background-color: var(--bg-base); overflow-x: hidden; }
 
 body {
   font-family: var(--font-body);
   background-color: var(--bg-base);
   color: var(--text-main);
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 400;
@@ -221,7 +221,7 @@ h3 {
 .btn-primary:hover::before { left: 150%; }
 
 /* === SECTION BASE === */
-section { padding: var(--section-pad) 0; position: relative; }
+section { padding: var(--section-pad) 0; position: relative; overflow: hidden; }
 .section-bordered { border-top: 1px solid var(--border-subtle); }
 
 /* === PHOTO PLACEHOLDERS (PREMIUM) === */
