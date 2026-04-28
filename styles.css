@@ -388,27 +388,165 @@ section { padding: var(--section-pad) 0; position: relative; }
 .delay-2 { transition-delay: 0.2s; }
 .delay-3 { transition-delay: 0.3s; }
 
-/* === MOBILE === */
+/* === TABLET (max 1024px) === */
 @media (max-width: 1024px) {
+  :root {
+    --section-pad: clamp(60px, 8vw, 100px);
+  }
+
   .usp-grid, .timeline { grid-template-columns: repeat(2, 1fr); }
   .fin-grid, .team-grid { grid-template-columns: 1fr; gap: 50px; }
   .franchise-grid { grid-template-columns: repeat(2, 1fr); }
   .franchise-card.featured { transform: none; }
+  .concept-inner { gap: 50px; }
 }
 
+/* === MOBILE (max 768px) === */
 @media (max-width: 768px) {
+  :root {
+    --section-pad: clamp(50px, 8vw, 80px);
+  }
+
+  /* NAV */
+  .nav { padding: 20px 0; }
+  .nav.scrolled { padding: 12px 0; }
   .nav-links, .nav-cta { display: none; }
   .burger { display: flex; }
-  .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--bg-base); padding: 30px; border-bottom: 1px solid var(--border-subtle); gap: 20px; }
-  .concept-inner { grid-template-columns: 1fr; }
-  .usp-grid, .team-members, .fin-cards { grid-template-columns: 1fr; }
-  .franchise-grid, .timeline { grid-template-columns: 1fr; }
-  .atmo-grid .photo-placeholder { grid-column: span 12 !important; aspect-ratio: 4/3 !important; }
-  .menu-panel.active { grid-template-columns: 1fr; gap: 30px; }
-  .cta-form { flex-direction: column; background: transparent; border: none; padding: 0; gap: 15px; }
-  .cta-form input { border: 1px solid var(--border-subtle); border-radius: 6px; }
-  h1 { font-size: 3rem; }
-  h2 { font-size: 2.2rem; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(5, 5, 5, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 30px 5%;
+    border-bottom: 1px solid var(--border-subtle);
+    gap: 20px;
+    z-index: 999;
+  }
+  .nav-links.open a { font-size: 0.9rem; opacity: 1; }
+  .nav-logo .logo-main { font-size: 1.4rem; }
+  .nav-logo .logo-sub { font-size: 0.4rem; }
+
+  /* HERO */
+  .hero { min-height: 100svh; padding: 120px 0 60px; }
+  .hero h1 { font-size: clamp(2.5rem, 12vw, 4rem); }
+  .hero-tagline { font-size: 0.85rem; letter-spacing: 0.15em; margin-bottom: 30px; }
+  .hero-stats { gap: 30px; margin-top: 50px; padding-top: 30px; }
+  .hero-stat-value { font-size: 2rem; }
+  .hero-stat-unit { font-size: 0.75rem; }
+  .hero-stat-label { font-size: 0.65rem; }
+  .btn-primary { padding: 16px 35px; font-size: 0.75rem; letter-spacing: 0.15em; }
+
+  /* TYPOGRAPHY */
+  h1 { font-size: 2.8rem; }
+  h2 { font-size: 2rem; }
+  h3 { font-size: 1.3rem; }
+  .section-label { font-size: 0.65rem; letter-spacing: 0.3em; }
+  .section-subtitle { font-size: 0.95rem; margin-bottom: 40px; }
+
+  /* CONCEPT */
+  .concept-inner { grid-template-columns: 1fr; gap: 40px; }
+  .concept-text { font-size: 1rem; margin-bottom: 25px; }
+  .concept-quote { font-size: 1.6rem; }
+  .concept-gallery { gap: 12px; }
+
+  /* USP */
+  .usp-grid { grid-template-columns: 1fr; gap: 16px; }
+  .usp-card { padding: 35px 25px; }
+  .usp-icon { font-size: 4rem; }
+  .usp-card h3 { font-size: 1.2rem; }
+  .usp-card p { font-size: 0.9rem; }
+
+  /* ATMOSPHERE */
+  .atmo-grid { gap: 10px; }
+  .atmo-grid .photo-placeholder { grid-column: span 12 !important; aspect-ratio: 16/9 !important; }
+
+  /* FINANCE */
+  .fin-grid { grid-template-columns: 1fr; gap: 40px; }
+  .fin-cards { grid-template-columns: 1fr; gap: 16px; }
+  .fin-card { padding: 30px 20px; }
+  .fin-card-value { font-size: 2.5rem; }
+  .fin-bars-wrapper { padding: 30px 20px; }
+  .fin-bar-item label { font-size: 0.75rem; }
+
+  /* MENU */
+  .menu-tabs { gap: 10px; margin-bottom: 40px; padding-bottom: 15px; }
+  .menu-tab { font-size: 0.75rem; letter-spacing: 0.1em; padding: 8px 5px; }
+  .menu-panel.active { grid-template-columns: 1fr; gap: 25px; }
+  .menu-panel .photo-placeholder { aspect-ratio: 16/10; }
+  .menu-list li { padding: 15px 0; }
+  .menu-list li span:first-child { font-size: 1rem; }
+
+  /* FRANCHISE */
+  .franchise-grid { grid-template-columns: 1fr; gap: 16px; }
+  .franchise-card { padding: 35px 25px; }
+  .franchise-price { font-size: 2.8rem; }
+  .franchise-name { font-size: 0.75rem; margin-bottom: 15px; }
+  .franchise-features li { font-size: 0.85rem; padding: 10px 0; }
+
+  /* TEAM */
+  .team-grid { grid-template-columns: 1fr; gap: 40px; }
+  .team-photo .photo-placeholder { aspect-ratio: 16/10; }
+  .team-members { grid-template-columns: 1fr; gap: 25px; }
+  .team-member h3 { font-size: 1.3rem; }
+  .team-member p { font-size: 0.85rem; }
+
+  /* CTA */
+  .cta-section { padding: 80px 0; }
+  .cta-content h2 { font-size: clamp(2rem, 8vw, 3rem); }
+  .primary-btn { font-size: 0.8rem !important; padding: 16px 35px !important; }
+
+  /* FOOTER */
+  .footer { padding: 30px 0; }
+  .footer p { font-size: 0.7rem; }
+
+  /* MODAL */
+  .modal-content { padding: 40px 25px; max-width: 90%; }
+  .modal-content h3 { font-size: 1.5rem; }
+  .modal-content p { font-size: 0.9rem; margin-bottom: 25px; }
+  .modal-btn { padding: 14px 16px; font-size: 0.8rem; }
+}
+
+/* === SMALL PHONES (max 480px) === */
+@media (max-width: 480px) {
+  .hero h1 { font-size: 2.2rem; }
+  .hero-stats { flex-direction: column; gap: 20px; align-items: center; }
+  .hero-stat { width: 100%; display: flex; align-items: center; gap: 12px; text-align: left; }
+  .hero-stat-value { font-size: 1.8rem; min-width: 60px; }
+  .hero-stat-unit { display: inline; margin-top: 0; font-size: 0.7rem; }
+  .hero-stat-label { font-size: 0.6rem; margin-top: 0; }
+
+  h2 { font-size: 1.8rem; }
+  .section-label { font-size: 0.6rem; letter-spacing: 0.2em; gap: 10px; }
+  .section-label::before, .section-label.center::after { width: 25px; }
+
+  .usp-card { padding: 28px 20px; }
+  .usp-icon { font-size: 3.2rem; }
+
+  .concept-gallery { grid-template-columns: 1fr; }
+  .concept-gallery .photo-placeholder:first-child { aspect-ratio: 16/9; }
+  .concept-gallery .photo-placeholder:not(:first-child) { aspect-ratio: 16/10; }
+
+  .franchise-card { padding: 30px 20px; }
+  .franchise-price { font-size: 2.2rem; }
+
+  .fin-card-value { font-size: 2rem; }
+
+  .menu-tabs { gap: 6px; }
+  .menu-tab { font-size: 0.65rem; letter-spacing: 0.08em; }
+
+  .cta-content h2 { font-size: 1.8rem; }
+  .primary-btn { width: 100% !important; padding: 16px 20px !important; font-size: 0.75rem !important; }
+
+  .modal-content { padding: 35px 20px; }
+  .modal-btn { font-size: 0.75rem; padding: 14px 12px; gap: 10px; }
+  .modal-btn svg { width: 18px; height: 18px; }
+
+  .footer p { flex-direction: column; gap: 10px !important; }
 }
 /* Contact Modal */
 .modal-overlay {
