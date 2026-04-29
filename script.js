@@ -43,7 +43,11 @@ document.addEventListener('DOMContentLoaded', () => {
       panels.forEach(p => p.classList.remove('active'));
       tab.classList.add('active');
       const target = document.getElementById(tab.dataset.tab);
-      if (target) target.classList.add('active');
+      if (target) {
+        target.classList.add('active');
+        // Ensure fade-up animation fires for panels hidden during scroll
+        target.classList.add('visible');
+      }
     });
   });
 
